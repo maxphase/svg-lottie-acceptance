@@ -43,6 +43,7 @@ Adjust the paths in .env to point to your SVG and Lottie file locations. It's re
 #### Important Note
 
 This script assumes that lottie files in the lottie directory have same corresponding File IDs as original svg files. I.E.
+
 ```
 1000.svg -> 1000.json
 2345.svg -> 2345.json
@@ -68,7 +69,19 @@ After configuring your environment, you can run the visual comparison tool with:
 
 This command will execute the tests as defined, comparing each SVG file in your specified directory with its corresponding Lottie file and generating visual diffs for any discrepancies found.
 
+## Outputs
+
+The script generates console output of type: 
+
+``` 
+<num failed> failed
+failed output
+<num_passed> passed
+```
+
+It also creates a folder called `screenshots` where it saves the difference images on the failed comparisons for reference.
+
 ## Notes
 
 Ensure that the version of Node.js installed is 18.12.1 to avoid compatibility issues.
-The number of MAX_WORKERS should be adjusted based on your testing needs and the capabilities of your testing environment.
+The number of MAX_WORKERS should be adjusted based on the capabilities of your hardware. More workers = faster runtime, but more system load.
