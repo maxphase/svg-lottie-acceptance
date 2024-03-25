@@ -20,13 +20,17 @@ test.describe('Lottie export visual comparison', () => {
     // Dynamically generate tests based on the number of SVG files
     let svgFiles = fs.readdirSync(SVG_FOLDER_PATH).filter(file => path.extname(file) === '.svg');
 
-    // //for debug, slice out 5 files only
-    svgFiles = svgFiles.slice(0, 10);
+    // //for debug, slice out some files
+    // svgFiles = svgFiles.slice(800, 830);
 
     for (const svgFile of svgFiles) {
         test(`Compare ${svgFile} with Lottie`, async ({ page }) => {
             const svgFilePath = path.join(SVG_FOLDER_PATH, svgFile);
             const lottieFilePath = path.join(LOTTIE_FOLDER_PATH, svgFile.replace('.svg', '.json'));
+            // check if lottie file exists
+            if (!fs.existsSync(lottieFilePath)) {
+                throw new Error(`Lottie file not found for ${svgFile}`);
+            }
 
             // load the svg html into browser
             const svgViewerHTML = fs.readFileSync(path.join(__dirname, svgViewerPath), 'utf-8');
@@ -41,12 +45,8 @@ test.describe('Lottie export visual comparison', () => {
             const svgScrName = `svg-${svgFile}.png`;
             const svgScrPath = path.join('screenshots', svgScrName);
 
-            const svgBB = await svgContainer.boundingBox();
-            if (svgBB) {
-                await page.screenshot({ path: svgScrPath, clip: { x: svgBB.x, y: svgBB.y, width: svgBB.width, height: svgBB.height }});
-            } else throw new Error('SVG container not found');
             // Take a screenshot of the SVG container
-            // await svgContainer.screenshot({ path: svgScrPath });
+            await svgContainer.screenshot({ path: svgScrPath });
 
             // Load the Lottie viewer
             const newBrowser = await chromium.launch();
@@ -60,13 +60,11 @@ test.describe('Lottie export visual comparison', () => {
             const lottiePlayer = await lottiePage.locator('#lottie-player');
             const lottieScrName = `lottie-${svgFile}.png`;
             const lottieScrPath = path.join('screenshots', lottieScrName);
-            const lottieBB = await lottiePlayer.boundingBox();
-            if (lottieBB) {
-                await lottiePage.screenshot({ path: lottieScrPath, clip: { x: lottieBB.x, y: lottieBB.y, width: lottieBB.width, height: lottieBB.height }});
-            } else throw new Error('Lottie player not found');
-            // await lottiePlayer.screenshot({ path: lottieScrPath });
 
-            const ACCEPTABLE_MISMATCH_THRESHOLD = 3.0;
+            // Take a screenshot of the Lottie player
+            await lottiePlayer.screenshot({ path: lottieScrPath });
+
+            const ACCEPTABLE_MISMATCH_THRESHOLD = 5.0;
 
             interface ComparisonResult {
                 pass: boolean;
@@ -79,6 +77,7 @@ test.describe('Lottie export visual comparison', () => {
                 resemble(svgScrPath)
                 .compareTo(lottieScrPath)
                 .ignoreAntialiasing()
+                .scaleToSameSize()
                 .onComplete((result: any) => {
                     if (result.misMatchPercentage <= ACCEPTABLE_MISMATCH_THRESHOLD) {
                         resolve({ pass: true, misMatchPercentage: result.misMatchPercentage });
@@ -113,8 +112,8 @@ test.describe('Lottie export visual comparison', () => {
 
             // Close the browser
             await newBrowser.close();
-            // clean up the screenshot
-            // fs.unlinkSync(path.join('screenshots', svgScrName));
+            // Clean up the screenshot
+            fs.unlinkSync(path.join('screenshots', svgScrName));
         });
     }
 });

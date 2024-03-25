@@ -32,9 +32,8 @@
       height: var(--svg-height, 500px) !important;
     }
     #svg-container svg {
-      width: 100%;
-      height: 100%;
-      display: block; /* This can help remove any extra space below the SVG */
+      width: 500px !important;
+      height: 500px !important;
     }
     #input-container {
       flex: 1;
@@ -55,26 +54,6 @@
   </style>
 
   <script>
-    // Default size
-    const DEFAULT_WIDTH = '500px';
-    const DEFAULT_HEIGHT = '500px';
-
-    // Placeholders to be replaced by Playwright
-    const WIDTH_PLACEHOLDER = '%%WIDTH%%';
-    const HEIGHT_PLACEHOLDER = '%%HEIGHT%%';
-
-    // Determine the actual width and height
-    const width = WIDTH_PLACEHOLDER === '%%WIDTH%%' ? DEFAULT_WIDTH : WIDTH_PLACEHOLDER;
-    const height = HEIGHT_PLACEHOLDER === '%%HEIGHT%%' ? DEFAULT_HEIGHT : HEIGHT_PLACEHOLDER;
-
-    // Function to set the size of the SVG container
-    function setSVGSize() {
-      const svgContainer = document.querySelector('#svg-container');
-      svgContainer.style.setProperty('--svg-width', width, 'important');
-      svgContainer.style.setProperty('--svg-height', height, 'important');
-    }
-
-
     function readSVGFile(file) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -106,7 +85,6 @@
 
     // Call setup function on DOMContentLoaded
     window.addEventListener('DOMContentLoaded', () => {
-      setSVGSize();
       setupPageDragAndDrop();
     });
   </script>

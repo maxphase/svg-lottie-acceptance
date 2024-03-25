@@ -16,6 +16,8 @@
 
         #lottie-player {
             background-color: white;
+            width: 500px !important;
+            height: 500px !important;
         }
 
         .button {
@@ -32,29 +34,6 @@
             background-color: #45a049;
         }
     </style>
-    <script>
-        // Default size
-        const DEFAULT_WIDTH = '500px';
-        const DEFAULT_HEIGHT = '500px';
-  
-        // Placeholders to be replaced by Playwright
-        const WIDTH_PLACEHOLDER = '%%WIDTH%%';
-        const HEIGHT_PLACEHOLDER = '%%HEIGHT%%';
-  
-        // Determine the actual width and height
-        const width = WIDTH_PLACEHOLDER === '%%WIDTH%%' ? DEFAULT_WIDTH : WIDTH_PLACEHOLDER;
-        const height = HEIGHT_PLACEHOLDER === '%%HEIGHT%%' ? DEFAULT_HEIGHT : HEIGHT_PLACEHOLDER;
-  
-        // Function to set the size of the lottie-player
-        function setLottieSize() {
-            const lottiePlayer = document.querySelector('lottie-player');
-            lottiePlayer.style.setProperty('width', width, 'important');
-            lottiePlayer.style.setProperty('height', height, 'important');
-        }
-  
-        // Call the function to set the size
-        window.addEventListener('DOMContentLoaded', setLottieSize);
-      </script>
 </head>
 <body>
     <input type="file" id="file-chooser" accept=".json" style="display:none;" data-test-id="file-chooser" />
