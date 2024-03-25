@@ -4,7 +4,11 @@ This tool automates the visual comparison of SVG files and their corresponding L
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+### OS
+
+Tested working on `MacOS` (arm64 & amd64) and `Linux`. `Windows` support is untested
+
+### Before you begin, ensure you have the following installed
 
 - Node.js (version 18.12.1 is required)
 - npm (typically comes with Node.js)
