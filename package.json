@@ -1,0 +1,26 @@
+{
+  "name": "svg-to-lottie-comparison-tool",
+  "version": "1.0.0",
+  "description": "A tool for comparing SVG files with their Lottie animation conversions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxphase/svg-lottie-acceptance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxphase/svg-lottie-acceptance/issues"
+  },
+  "homepage": "https://github.com/maxphase/svg-lottie-acceptance#readme",
+  "engines": {
+    "node": "18.12.1"
+  },
+  "dependencies": {
+    "playwright": "^1.42.1"
+  }
+}
