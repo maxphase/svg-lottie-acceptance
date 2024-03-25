@@ -1,5 +1,8 @@
 // playwright.config.ts
 import { PlaywrightTestConfig } from '@playwright/test';
+import { config as dotenvConfig } from 'dotenv';
+
+dotenvConfig();
 
 const config: PlaywrightTestConfig = {
     workers: parseInt(process.env.MAX_WORKERS || '1', 10),

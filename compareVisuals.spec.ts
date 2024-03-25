@@ -10,7 +10,6 @@ config();
 
 const SVG_FOLDER_PATH = process.env.SVG_FOLDER_PATH || '';
 const LOTTIE_FOLDER_PATH = process.env.LOTTIE_FOLDER_PATH || '';
-const MAX_WORKERS = process.env.MAX_WORKERS ? parseInt(process.env.MAX_WORKERS) : 1;
 
 const svgViewerPath = 'html/svg-viewer.html';
 const lottieViewerPath = 'html/lottie-player.html';
