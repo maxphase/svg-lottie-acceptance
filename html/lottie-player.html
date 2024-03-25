@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: gainsboro;
+        }
+
+        #lottie-player {
+            background-color: white;
+        }
+
+        .button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        // Default size
+        const DEFAULT_WIDTH = '500px';
+        const DEFAULT_HEIGHT = '500px';
+  
+        // Placeholders to be replaced by Playwright
+        const WIDTH_PLACEHOLDER = '%%WIDTH%%';
+        const HEIGHT_PLACEHOLDER = '%%HEIGHT%%';
+  
+        // Determine the actual width and height
+        const width = WIDTH_PLACEHOLDER === '%%WIDTH%%' ? DEFAULT_WIDTH : WIDTH_PLACEHOLDER;
+        const height = HEIGHT_PLACEHOLDER === '%%HEIGHT%%' ? DEFAULT_HEIGHT : HEIGHT_PLACEHOLDER;
+  
+        // Function to set the size of the lottie-player
+        function setLottieSize() {
+            const lottiePlayer = document.querySelector('lottie-player');
+            lottiePlayer.style.setProperty('width', width, 'important');
+            lottiePlayer.style.setProperty('height', height, 'important');
+        }
+  
+        // Call the function to set the size
+        window.addEventListener('DOMContentLoaded', setLottieSize);
+      </script>
+</head>
+<body>
+    <input type="file" id="file-chooser" accept=".json" style="display:none;" data-test-id="file-chooser" />
+    <button class="button" id="choose-file" data-test-id="choose-file-button">Choose File</button>
+    <br><br>
+    <lottie-player
+        id="lottie-player"
+        speed="1"
+        data-test-id="lottie-player">
+    </lottie-player>
+    <div id="controls">
+        <button class="button" id="play" data-test-id="play-button">Play</button>
+        <button class="button" id="pause" data-test-id="pause-button">Pause</button>
+        <button class="button" id="reset" data-test-id="reset-button">Reset</button>
+    </div>
+    <div>Total Frames: <span id="total-frames" data-test-id="total-frames">0</span>, Frame Rate: <span id="frame-rate" data-test-id="frame-rate">0</span> FPS</div>
+    <div>Current Frame: <span id="current-frame" data-test-id="current-frame">0</span></div>
+    <input type="number" id="frame-input" value="0" data-test-id="frame-input" />
+    <button class="button" id="jump-to-frame" data-test-id="jump-to-frame-button">Jump to Frame</button>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let animation = null;
+
+        // Making the whole document a drop zone
+        document.addEventListener('dragover', (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'copy';
+        });
+
+        document.addEventListener('drop', (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            const file = event.dataTransfer.files[0];
+            if (file && file.type === "application/json") {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const animationData = JSON.parse(e.target.result);
+                    if(animation !== null) {
+                        animation.destroy();
+                    }
+                    animation = lottie.loadAnimation({
+                        container: document.getElementById('lottie-player'),
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: false,
+                        animationData: animationData,
+                    });
+
+                    // Update details once the animation is loaded
+                    animation.addEventListener('DOMLoaded', () => {
+                        document.getElementById('total-frames').textContent = animation.totalFrames;
+                        document.getElementById('frame-rate').textContent = animation.frameRate;
+                        updateCurrentFrame();
+                    });
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function updateCurrentFrame() {
+            requestAnimationFrame(() => {
+                if (animation) {
+                    const currentFrame = Math.round(animation.currentFrame);
+                    document.getElementById('current-frame').textContent = currentFrame;
+                    updateCurrentFrame();
+                }
+            });
+        }
+
+        // Control buttons
+        document.getElementById('play').addEventListener('click', () => animation?.play());
+        document.getElementById('pause').addEventListener('click', () => animation?.pause());
+        document.getElementById('reset').addEventListener('click', () => {
+            if (animation) {
+                animation.goToAndStop(0, true);
+                document.getElementById('current-frame').textContent = '0'; // Reset current frame display
+            }
+        });
+
+        // Jump to frame
+        document.getElementById('jump-to-frame').addEventListener('click', () => {
+            const frameNumber = parseInt(document.getElementById('frame-input').value, 10);
+            if (!isNaN(frameNumber) && animation) {
+                animation.goToAndStop(frameNumber, true);
+                document.getElementById('current-frame').textContent = frameNumber.toString();
+            }
+        });
+
+        document.getElementById('frame-input').addEventListener('keydown', event => {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevents the default action of the Enter key
+                const frameNumber = parseInt(event.target.value, 10); // Use the event's target to get the input value
+                if (!isNaN(frameNumber) && animation) {
+                    animation.goToAndStop(frameNumber, true);
+                }
+            }
+        });
+
+        // Choose file button triggers hidden file input
+        document.getElementById('choose-file').addEventListener('click', () => {
+            document.getElementById('file-chooser').click();
+        });
+
+        document.getElementById('file-chooser').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const animationData = JSON.parse(e.target.result);
+                    if(animation !== null) {
+                        animation.destroy();
+                    }
+                    animation = lottie.loadAnimation({
+                        container: document.getElementById('lottie-player'),
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: false,
+                        animationData: animationData,
+                    });
+
+                    animation.addEventListener('DOMLoaded', () => {
+                        document.getElementById('total-frames').textContent = animation.totalFrames;
+                        document.getElementById('frame-rate').textContent = animation.frameRate;
+                        updateCurrentFrame(); // Start updating current frame display for new animation
+                    });
+                };
+                reader.readAsText(file);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
