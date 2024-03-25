@@ -111,8 +111,13 @@ test.describe('Lottie export visual comparison', () => {
 
             // Close the browser
             await newBrowser.close();
+            // ┌──────────────────────────────────┐
+            // │       Comment out to retain      |
+            // |      svg and lottie screenshots  │
+            // └──────────────────────────────────┘
             // Clean up the screenshot
             fs.unlinkSync(path.join('screenshots', svgScrName));
+            fs.unlinkSync(path.join('screenshots', lottieScrName));
         });
     }
 });
