@@ -21,9 +21,15 @@
     "node": "18.12.1"
   },
   "dependencies": {
+    "@playwright/test": "^1.42.1",
     "dotenv": "^16.4.5",
     "playwright": "^1.42.1",
+    "resemblejs": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/resemblejs": "^4.1.3"
   }
 }

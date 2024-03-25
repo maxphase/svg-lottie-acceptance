@@ -28,8 +28,8 @@
       align-items: center;
       justify-content: center;
       margin-right: 25px; /* Adjusted margin right */
-      width: var(--svg-width, 500px); /* default to 500px if not set */
-      height: var(--svg-height, 500px); /* default to 500px if not set */
+      width: var(--svg-width, 500px) !important;
+      height: var(--svg-height, 500px) !important;
     }
     #svg-container svg {
       width: 100%;
@@ -70,8 +70,8 @@
     // Function to set the size of the SVG container
     function setSVGSize() {
       const svgContainer = document.querySelector('#svg-container');
-      svgContainer.style.setProperty('--svg-width', width);
-      svgContainer.style.setProperty('--svg-height', height);
+      svgContainer.style.setProperty('--svg-width', width, 'important');
+      svgContainer.style.setProperty('--svg-height', height, 'important');
     }
 
 
