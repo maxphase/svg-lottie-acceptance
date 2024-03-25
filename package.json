@@ -21,6 +21,9 @@
     "node": "18.12.1"
   },
   "dependencies": {
-    "playwright": "^1.42.1"
+    "dotenv": "^16.4.5",
+    "playwright": "^1.42.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
   }
 }
