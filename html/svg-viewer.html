@@ -84,38 +84,30 @@
       reader.readAsText(file);
     }
 
-    // Function to set up drag and drop functionality
-    function setupDragAndDrop() {
-      const inputContainer = document.querySelector('#input-container');
-      const svgInput = document.querySelector('#svg-input');
-
-      inputContainer.addEventListener('dragover', (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-        inputContainer.classList.add('dragover'); // Add style to indicate drag over
+    function setupPageDragAndDrop() {
+      // Listen to dragover event on the entire page
+      document.addEventListener('dragover', (event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          event.dataTransfer.dropEffect = 'copy'; // Show as copy
       });
 
-      inputContainer.addEventListener('dragleave', (event) => {
-        inputContainer.classList.remove('dragover'); // Remove style when dragging leaves
-      });
+      // Listen to drop event on the entire page
+      document.addEventListener('drop', (event) => {
+          event.stopPropagation();
+          event.preventDefault();
 
-      inputContainer.addEventListener('drop', (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-        inputContainer.classList.remove('dragover'); // Remove style on drop
-
-        const files = event.dataTransfer.files;
-        if (files.length > 0 && files[0].type === 'image/svg+xml') {
-          readSVGFile(files[0]); // Read the SVG file
-        }
+          const files = event.dataTransfer.files; // Access the dropped files
+          if (files.length > 0 && files[0].type === 'image/svg+xml') {
+              readSVGFile(files[0]); // Call readSVGFile function if an SVG file is dropped
+          }
       });
-    }
+  }
 
     // Call setup function on DOMContentLoaded
     window.addEventListener('DOMContentLoaded', () => {
       setSVGSize();
-      setupDragAndDrop();
+      setupPageDragAndDrop();
     });
   </script>
 
@@ -154,7 +146,7 @@
       }
     });
 
-    setupDragAndDrop();
+    setupPageDragAndDrop();
   </script>
 </body>
 </html>
