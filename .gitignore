@@ -18,6 +18,7 @@ test-results/
 *.jpg
 **/__playwright__/**
 **/test-results/**
+sandbox
 
 # Editor directories and files
 .vscode/
