@@ -1,0 +1,39 @@
+<svg width="780" height="223" viewBox="0 0 780 223" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="638.458" cy="160.792" r="61.4583" fill="#C6EC2C"/>
+<circle cx="61.4583" cy="144.792" r="61.4583" fill="#C6EC2C"/>
+<circle cx="90.6251" cy="61.4583" r="61.4583" fill="#6A78F3"/>
+<circle cx="667.625" cy="77.4583" r="61.4583" fill="#6A78F3"/>
+<circle cx="717.625" cy="158.708" r="61.4583" fill="#EB1010"/>
+<circle cx="140.625" cy="142.708" r="61.4583" fill="#EB1010"/>
+<mask id="mask0_1_185825" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="288" y="52" width="149" height="112">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M337.056 52.75H288.667V144.906C291.518 145.356 294.442 145.59 297.424 145.59C327.985 145.59 352.607 120.996 352.607 90.8447C352.607 76.0631 346.69 62.6173 337.056 52.75ZM371.29 52.75C377.242 64.145 380.607 77.0972 380.607 90.8447C380.607 122.584 362.668 150.084 336.384 163.969H436.667V52.75H371.29Z" fill="#F8A65A"/>
+</mask>
+<g mask="url(#mask0_1_185825)">
+<circle cx="328.458" cy="144.792" r="61.4583" fill="#C6EC2C"/>
+<circle cx="357.625" cy="61.4583" r="61.4583" fill="#6A78F3"/>
+<circle cx="407.625" cy="142.708" r="61.4583" fill="#EB1010"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M70.0559 52.75H21.6667V144.906C24.5178 145.356 27.4427 145.59 30.4241 145.59C60.9851 145.59 85.6076 120.996 85.6076 90.8447C85.6076 76.0631 79.6899 62.6173 70.0559 52.75ZM104.291 52.75C110.242 64.145 113.608 77.0972 113.608 90.8447C113.608 122.584 95.6682 150.084 69.3839 163.969H169.667V52.75H104.291Z" fill="#F8A65A"/>
+<g clip-path="url(#clip0_1_185825)">
+<rect x="597" y="64" width="152.92" height="120" fill="#F8A65A"/>
+<path d="M629.92 69.3098L639.1 95.9095H668.804L644.773 112.349L653.952 138.949L629.92 122.509L605.889 138.949L615.068 112.349L591.036 95.9095H620.741L629.92 69.3098Z" fill="#7728B6"/>
+<ellipse cx="725.5" cy="148" rx="56.5" ry="61" fill="#47F4FF" stroke="#302DD3" stroke-width="5.84071"/>
+<g opacity="0.8">
+<g clip-path="url(#clip1_1_185825)">
+<rect x="584" y="118" width="112" height="104" fill="#75A4FF"/>
+<ellipse cx="654.885" cy="135.257" rx="23.6283" ry="31.0619" fill="#0C2324"/>
+<ellipse cx="617.5" cy="173" rx="23.5" ry="27" stroke="#FFD3CA" stroke-width="5.84071"/>
+</g>
+<rect x="584" y="118" width="112" height="104" stroke="white" stroke-width="5.84071"/>
+</g>
+</g>
+<rect x="597" y="64" width="152.92" height="120" stroke="black" stroke-width="16"/>
+<defs>
+<clipPath id="clip0_1_185825">
+<rect x="597" y="64" width="152.92" height="120" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1_185825">
+<rect x="584" y="118" width="112" height="104" fill="white"/>
+</clipPath>
+</defs>
+</svg>

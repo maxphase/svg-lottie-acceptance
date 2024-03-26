@@ -1,0 +1,22 @@
+<svg width="1080" height="624" viewBox="0 0 1080 624" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-252" y="624" width="666" height="792" transform="rotate(-90 -252 624)" fill="url(#paint0_angular_1_253)"/>
+<rect width="666" height="792" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 1332 624)" fill="url(#paint1_angular_1_253)"/>
+<defs>
+<radialGradient id="paint0_angular_1_253" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(81 1020) rotate(90) scale(371.396 94.1721)">
+<stop offset="0.00503373" stop-color="#EF59B2"/>
+<stop offset="0.2114" stop-color="#870151"/>
+<stop offset="0.336422" stop-color="#18131A" stop-opacity="0.131006"/>
+<stop offset="0.835338" stop-color="#071612" stop-opacity="0"/>
+<stop offset="0.971482" stop-opacity="0"/>
+<stop offset="0.993151" stop-color="#E752AA" stop-opacity="0.18"/>
+</radialGradient>
+<radialGradient id="paint1_angular_1_253" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(333 396) rotate(90) scale(371.396 94.1721)">
+<stop offset="0.00503373" stop-color="#EF59B2"/>
+<stop offset="0.2114" stop-color="#870151"/>
+<stop offset="0.336422" stop-color="#18131A" stop-opacity="0.131006"/>
+<stop offset="0.835338" stop-color="#071612" stop-opacity="0"/>
+<stop offset="0.971482" stop-opacity="0"/>
+<stop offset="0.993151" stop-color="#E752AA" stop-opacity="0.18"/>
+</radialGradient>
+</defs>
+</svg>

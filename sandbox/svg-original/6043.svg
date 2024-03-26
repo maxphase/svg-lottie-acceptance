@@ -1,0 +1,5 @@
+<svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.47715 0 0 4.47715 0 10V55C0 60.5228 4.47715 65 10 65H50C55.5228 65 60 60.5228 60 55V10C60 4.47715 55.5228 0 50 0H10ZM20 14C18.3431 14 17 15.3431 17 17V48C17 49.6569 18.3431 51 20 51H42C43.6569 51 45 49.6569 45 48V17C45 15.3431 43.6569 14 42 14H20Z" fill="#9D391F"/>
+<rect x="27" y="28" width="8" height="26" fill="#9D391F"/>
+<circle cx="31" cy="21" r="5" fill="#9D391F"/>
+</svg>

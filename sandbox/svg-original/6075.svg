@@ -1,0 +1,9 @@
+<svg width="449" height="394" viewBox="0 0 449 394" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="449" height="394" fill="white"/>
+<mask id="mask0_1_51933" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="100" y="250" width="100" height="100">
+<circle cx="150" cy="300" r="50" fill="#FB27FF"/>
+</mask>
+<g mask="url(#mask0_1_51933)">
+<rect x="50" y="300" width="150" height="100" fill="#60FFF5"/>
+</g>
+</svg>
